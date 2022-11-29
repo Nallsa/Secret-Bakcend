@@ -7,11 +7,20 @@ const clothesSchema = mongoose.Schema({
   colors: {
     brown: {
       size: {
-        xs: Number,
-        s: Number,
-        m: Number,
-        l: Number,
-        xl: Number,
+        XS: Number,
+        S: Number,
+        M: Number,
+        L: Number,
+        XL: Number,
+      },
+    },
+    black: {
+      size: {
+        XS: Number,
+        S: Number,
+        M: Number,
+        L: Number,
+        XL: Number,
       },
     },
   },
