@@ -2,17 +2,29 @@ const Categories = require('../models/Categories.model');
 
 module.exports.categoriesController = {
   getAllCategories: async (req, res) => {
-    const categoriesGet = await Categories.find();
-    res.json(categoriesGet);
+    try {
+      const categoriesGet = await Categories.find();
+      res.json(categoriesGet);
+    } catch (e) {
+      console.log(e);
+    }
   },
   postCategories: async (req, res) => {
-    const categoriesPost = await Categories.create({
-      name: req.body.categories,
-    });
-    res.json(categoriesPost);
+    try {
+      const categoriesPost = await Categories.create({
+        name: req.body.name,
+      });
+      res.json(categoriesPost);
+    } catch (e) {
+      console.log(e);
+    }
   },
   delCategories: async (req, res) => {
-    const categoriesDel = await Categories.findByIdAndDelete(req.params.id);
-    res.json(categoriesDel);
+    try {
+      const categoriesDel = await Categories.findByIdAndDelete(req.params.id);
+      res.json(categoriesDel);
+    } catch (e) {
+      console.log(e);
+    }
   },
 };
