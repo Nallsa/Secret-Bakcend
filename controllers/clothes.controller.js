@@ -3,7 +3,7 @@ const Clothes = require('../models/Clothes.model');
 module.exports.clothesController = {
   getAllClothes: async (req, res) => {
     try {
-      const clothesGet = await Clothes.find();
+      const clothesGet = await Clothes.find().populate('categoriesId');
       res.json(clothesGet);
     } catch (e) {
       console.log(e);
@@ -11,12 +11,29 @@ module.exports.clothesController = {
   },
   postClothes: async (req, res) => {
     try {
-      const { name, price, img, colors } = req.body;
+      const { name, price, colors, categoriesId, modelImg } = req.body;
       const clothesPost = await Clothes.create({
         name,
         price,
-        img,
         colors,
+        categoriesId,
+        modelImg,
+      });
+      res.json(clothesPost);
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
+  putClothes: async (req, res) => {
+    try {
+      const { name, price, modelImg, colors, categoriesId } = req.body;
+      const clothesPost = await Clothes.findByIdAndUpdate(req.params.id, {
+        name,
+        modelImg,
+        price,
+        colors,
+        categoriesId,
       });
       res.json(clothesPost);
     } catch (e) {

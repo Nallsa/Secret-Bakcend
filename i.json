@@ -1,0 +1,103 @@
+[
+  {
+    "colors": {
+      "white": {
+        "size": {
+          "XS": 5,
+          "S": 0,
+          "M": 6,
+          "L": 7,
+          "XL": 10
+        }
+      }
+    },
+    "_id": "63863ec4eb927813ebc28505",
+    "name": "Удлиненное женское пальто из шерсти",
+    "price": 23800,
+    "categoriesId": {
+      "_id": "6385f831c1b18a96163b5397",
+      "name": "Пальто",
+      "__v": 0
+    },
+    "__v": 0
+  },
+  {
+    "colors": {
+      "blue": {
+        "size": {
+          "XS": 0,
+          "S": 6,
+          "M": 0,
+          "L": 6,
+          "XL": 7
+        },
+        "img": "https://cdn1.ozone.ru/s3/multimedia-b/wc1000/6467235731.jpg"
+      },
+      "white": {
+        "size": {
+          "XS": 0,
+          "S": 10,
+          "M": 3,
+          "L": 0,
+          "XL": 11
+        },
+        "img": "https://cdn1.ozone.ru/s3/multimedia-8/wc1000/6467235728.jpg"
+      }
+    },
+    "_id": "638640852c68afe470af9d22",
+    "name": "Худи JIYAOOWR",
+    "price": 4000,
+    "categoriesId": {
+      "_id": "6385f83fc1b18a96163b5399",
+      "name": "Свитшоты",
+      "__v": 0
+    },
+    "__v": 0
+  },
+  {
+    "colors": {
+      "white": {
+        "size": {
+          "XS": 10,
+          "S": 6,
+          "M": 3,
+          "L": 7,
+          "XL": 11
+        },
+        "img": "https://cdn1.ozone.ru/s3/multimedia-a/wc1000/6435380266.jpg"
+      }
+    },
+    "_id": "638641642c68afe470af9d24",
+    "name": "Толстовка Koton",
+    "price": 8000,
+    "categoriesId": {
+      "_id": "6385f84cc1b18a96163b539d",
+      "name": "Толстовки",
+      "__v": 0
+    },
+    "__v": 0
+  },
+  {
+    "colors": {
+      "black": {
+        "size": {
+          "XS": 0,
+          "S": 5,
+          "M": 10,
+          "L": 6,
+          "XL": 20
+        },
+        "img": "https://cdn1.ozone.ru/s3/multimedia-y/wc1000/6374561350.jpg"
+      }
+    },
+    "_id": "638643262c68afe470af9d27",
+    "name": "Кардиган Piluth",
+    "price": 3104,
+    "categoriesId": {
+      "_id": "6385f845c1b18a96163b539b",
+      "name": "Кардиганы",
+      "__v": 0
+    },
+    "__v": 0
+  }
+]

@@ -3,27 +3,19 @@ const mongoose = require('mongoose');
 const clothesSchema = mongoose.Schema({
   name: String,
   price: Number,
-  img: String,
-  colors: {
-    brown: {
-      size: {
-        XS: Number,
-        S: Number,
-        M: Number,
-        L: Number,
-        XL: Number,
-      },
+  modelImg: String,
+  colors: [
+    {
+      color: String,
+      img: String,
+      sizesModel: [
+        {
+          size: String,
+          rest: Number,
+        },
+      ],
     },
-    black: {
-      size: {
-        XS: Number,
-        S: Number,
-        M: Number,
-        L: Number,
-        XL: Number,
-      },
-    },
-  },
+  ],
   categoriesId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Categories',
