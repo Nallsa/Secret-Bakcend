@@ -9,13 +9,25 @@ module.exports.clothesController = {
       console.log(e);
     }
   },
+  getOneClothes: async (req, res) => {
+    try {
+      const clothesGet = await Clothes.findById(req.params.id).populate(
+        'categoriesId'
+      );
+      res.json(clothesGet);
+    } catch (e) {
+      console.log(e);
+    }
+  },
   postClothes: async (req, res) => {
     try {
-      const { name, price, colors, categoriesId, modelImg } = req.body;
+      const { name, price, colors, discount, categoriesId, modelImg } =
+        req.body;
       const clothesPost = await Clothes.create({
         name,
         price,
         colors,
+        discount,
         categoriesId,
         modelImg,
       });
@@ -27,11 +39,13 @@ module.exports.clothesController = {
 
   putClothes: async (req, res) => {
     try {
-      const { name, price, modelImg, colors, categoriesId } = req.body;
+      const { name, price, modelImg, discount, colors, categoriesId } =
+        req.body;
       const clothesPost = await Clothes.findByIdAndUpdate(req.params.id, {
         name,
         modelImg,
         price,
+        discount,
         colors,
         categoriesId,
       });
