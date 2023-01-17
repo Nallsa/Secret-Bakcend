@@ -16,6 +16,7 @@ const usersSchema = mongoose.Schema({
         size: String,
         _id: String,
       },
+      _id: String,
     },
   ],
 });

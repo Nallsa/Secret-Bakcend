@@ -45,7 +45,7 @@ module.exports.usersController = {
         basket: candidate.basket,
       };
       const token = await jwt.sign(payload, process.env.SECRET_JWT_KEY, {
-        expiresIn: '30sec',
+        expiresIn: '1min',
       });
 
       return res.json({
@@ -59,16 +59,17 @@ module.exports.usersController = {
     try {
       res.json(req.user);
     } catch (e) {
-      console.log(e);
+      res.status(401).json(e.toString());
     }
   },
   renderUser: async (req, res) => {
     try {
-      const { login, password, basket } = req.body;
+      const {_id, login, password, basket } = req.body;
 
       const renderUser = await Users.findByIdAndUpdate(req.params.id, {
         login,
         basket,
+        _id
       });
 
       res.json(renderUser);
