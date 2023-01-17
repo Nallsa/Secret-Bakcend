@@ -1,8 +1,23 @@
 const mongoose = require('mongoose');
 
 const usersSchema = mongoose.Schema({
-  login: String,
+  login: {
+    type: String,
+    unique: true,
+  },
   password: String,
+  basket: [
+    {
+      amount: Number,
+      color: String,
+      modelName: String,
+      size: {
+        rest: Number,
+        size: String,
+        _id: String,
+      },
+    },
+  ],
 });
 
 const Users = mongoose.model('Users', usersSchema);
