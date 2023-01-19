@@ -32,10 +32,12 @@ module.exports.usersController = {
     try {
       const { login, password, basket } = req.body;
       const candidate = await Users.findOne({ login });
+
       if (!candidate) {
         return res.status(401).json('Неверный логин или пароль');
       }
       const valid = await bcrypt.compare(password, candidate.password);
+
       if (!valid) {
         return res.status(401).json('Неверный логин или пароль');
       }
@@ -45,34 +47,49 @@ module.exports.usersController = {
         basket: candidate.basket,
       };
       const token = await jwt.sign(payload, process.env.SECRET_JWT_KEY, {
-        expiresIn: '1min',
+        expiresIn: '7d',
       });
 
       return res.json({
         token: token,
       });
     } catch (e) {
-      console.log(e.toString());
+      res.status(401).json(e.toString())
     }
   },
   getUser: async (req, res) => {
     try {
-      res.json(req.user);
+      const { id, login, basket } = await Users.findById(req.user.id);
+
+      res.json({ id, login, basket });
     } catch (e) {
       res.status(401).json(e.toString());
     }
   },
+  localStorageAddUser: async (req, res) => {
+    try {
+      const { basket } = req.body;
+
+      await Users.findByIdAndUpdate(req.user.id, {
+        basket: [...req.user.basket, ...basket],
+      });
+      res.json('User изменен');
+    } catch (e) {
+      res.status(401).json(e.toString());
+    }
+  },
+
   renderUser: async (req, res) => {
     try {
-      const {_id, login, password, basket } = req.body;
+      const { id, login, basket } = req.body;
 
-      const renderUser = await Users.findByIdAndUpdate(req.params.id, {
+      await Users.findByIdAndUpdate(req.params.id, {
         login,
         basket,
-        _id
+        id,
       });
 
-      res.json(renderUser);
+      res.json('User изменен');
     } catch (e) {
       console.log(e);
     }
