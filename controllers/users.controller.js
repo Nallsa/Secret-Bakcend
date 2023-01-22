@@ -54,7 +54,7 @@ module.exports.usersController = {
         token: token,
       });
     } catch (e) {
-      res.status(401).json(e.toString())
+      res.status(401).json(e.toString());
     }
   },
   getUser: async (req, res) => {
@@ -70,9 +70,26 @@ module.exports.usersController = {
     try {
       const { basket } = req.body;
 
+      let includesArray = [];
+
+      const totalModel = [...req.user.basket, ...basket];
+
+      function itemCheck(item) {
+        if (includesArray.indexOf(item.uniqueId) === -1) {
+          includesArray.push(item.uniqueId);
+
+          return true;
+        }
+
+        return false;
+      }
+
+      const basketIncludes = totalModel.filter(item => itemCheck(item));
+
       await Users.findByIdAndUpdate(req.user.id, {
-        basket: [...req.user.basket, ...basket],
+        basket: basketIncludes,
       });
+
       res.json('User изменен');
     } catch (e) {
       res.status(401).json(e.toString());

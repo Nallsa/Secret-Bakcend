@@ -23,4 +23,7 @@ mongoose
 
     console.log('Успешно соединились с сервером MongoDB');
   })
-  .catch(() => console.log('Ошибка при соединении с сервером MongoDB'));
+  .catch(e => {
+    console.log(e.toString());
+    console.log('Ошибка при соединении с сервером MongoDB');
+  });
