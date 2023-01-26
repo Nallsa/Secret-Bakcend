@@ -21,12 +21,13 @@ module.exports.clothesController = {
   },
   postClothes: async (req, res) => {
     try {
-      const { name, price, colors, discount, categoriesId, modelImg } =
+      const { name, price, colors, discount, categoriesId, modelImg, img } =
         req.body;
       const clothesPost = await Clothes.create({
         name,
         price,
         colors,
+        img,
         discount,
         categoriesId,
         modelImg,
@@ -39,11 +40,12 @@ module.exports.clothesController = {
 
   putClothes: async (req, res) => {
     try {
-      const { name, price, modelImg, discount, colors, categoriesId } =
+      const { name, price, modelImg, discount, colors, categoriesId, img } =
         req.body;
       const clothesPost = await Clothes.findByIdAndUpdate(req.params.id, {
         name,
         modelImg,
+        img,
         price,
         discount,
         colors,

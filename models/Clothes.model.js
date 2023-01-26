@@ -5,10 +5,12 @@ const clothesSchema = mongoose.Schema({
   price: Number,
   discount: Number,
   modelImg: String,
+  img: [String],
   colors: [
     {
       color: String,
-      img: String,
+      modelImgItem: String,
+      imgItem: [String],
       sizesModel: [
         {
           size: String,

@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(require('./routes/categories.route'));
 app.use(require('./routes/clothes.route'));
 app.use(require('./routes/users.route'));
+app.use(require('./routes/coupons.route'));
 
 mongoose
   .connect(
