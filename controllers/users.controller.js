@@ -51,6 +51,7 @@ module.exports.usersController = {
       });
 
       return res.json({
+        login: login,
         token: token,
       });
     } catch (e) {

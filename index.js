@@ -12,6 +12,7 @@ app.use(require('./routes/categories.route'));
 app.use(require('./routes/clothes.route'));
 app.use(require('./routes/users.route'));
 app.use(require('./routes/coupons.route'));
+app.use(require('./routes/orders.route'));
 
 mongoose
   .connect(

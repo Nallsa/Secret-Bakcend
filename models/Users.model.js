@@ -12,7 +12,8 @@ const usersSchema = mongoose.Schema({
       color: String,
       modelName: String,
       price: Number,
-      img: String,
+      modelImg: String,
+      img: [String],
       uniqueId: String,
       size: {
         rest: Number,
